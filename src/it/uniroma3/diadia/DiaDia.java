@@ -110,6 +110,7 @@ public class DiaDia {
 			int cfu = this.partita.getGiocatore().getCfu();
 			this.partita.getGiocatore().setCfu(cfu--);
 		}
+		io.mostraMessaggio("Stanza corrente:");
 		io.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio("Borsa:");
 		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
