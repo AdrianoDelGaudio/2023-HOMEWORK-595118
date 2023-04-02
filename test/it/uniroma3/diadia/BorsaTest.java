@@ -12,18 +12,17 @@ import it.uniroma3.diadia.giocatore.Borsa;
 class BorsaTest {
 
 	Borsa b = new Borsa();
-	Attrezzo falce;
+	Attrezzo martello;
 	Attrezzo sega;
 	
 	@Before
 	public void setUp() {
-		falce = new Attrezzo("falce", 2);
+		martello = new Attrezzo("martello", 2);
 		sega = new Attrezzo("sega", 16);
 	}
-
 	@Test
 	public void testAddAttrezzoPesoMinoreDiDieci() {
-		assertTrue(b.addAttrezzo(falce));
+		assertTrue(b.addAttrezzo(martello));
 
 	}
 	
@@ -35,9 +34,10 @@ class BorsaTest {
 	
 	@Test
 	public void testGetPeso() {
-		b.addAttrezzo(falce);
-		assertEquals(falce, b.getAttrezzo("falce"));
+		b.addAttrezzo(martello);
+		assertEquals(martello, b.getAttrezzo("martello"));
 
 	}
 
+	
 }

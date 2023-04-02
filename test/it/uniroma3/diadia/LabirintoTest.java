@@ -1,6 +1,7 @@
 package it.uniroma3.diadia;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -23,18 +24,17 @@ class LabirintoTest {
 		DS1 = new Stanza("DS1");
 	}
 
-
 	@Test
-	public void testGetStanzaVincente() {
-		assertEquals("Biblioteca", l.getStanzaVincente().getNome());
+	public void testgetStanzaVincente() {
+		assertEquals("Biblioteca",l.getStanzaVincente().getNome());
 	}
-
-
+	
 	@Test
 	public void testSetStanzaCorrente() {
 		l.setStanzaCorrente(DS1);
 		assertEquals(DS1, l.getStanzaCorrente());
 	}
+	
 	@Test
 	public void testGetStanzaCorrente() {
 		assertEquals("Atrio", l.getStanzaCorrente().getNome());

@@ -4,6 +4,7 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -29,7 +30,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine","prendi", "posa"};
 	private IOConsole io;
 	private Partita partita;
 
@@ -64,7 +65,12 @@ public class DiaDia {
 		else if (comandoDaEseguire.getNome().equals("fine")) {
 			this.fine(); 
 			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
+		} 
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
@@ -107,6 +113,19 @@ public class DiaDia {
 		io.mostraMessaggio(partita.getLabirinto().getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio("Borsa:");
 		io.mostraMessaggio(partita.getGiocatore().getBorsa().toString());
+	}
+	
+	private void prendi(String nomeAttrezzo) {
+		Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+		this.partita.getGiocatore().getBorsa().addAttrezzo(a);
+		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+	}
+
+	private void posa(String nomeAttrezzo) {
+		Attrezzo a = this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+		this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
+		this.partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+
 	}
 
 	/**

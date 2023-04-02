@@ -42,6 +42,7 @@ public class Labirinto {
 
 		// il gioco comincia nell'atrio
         stanzaCorrente = atrio;  
+        // il gioco finisce in biblioteca
 		stanzaVincente = biblioteca;
     }
 
